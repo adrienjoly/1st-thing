@@ -22,6 +22,8 @@
   <link rel="import" href="bower_components/paper-time-picker/paper-time-picker.html">
   <link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
   <link rel="import" href="bower_components/paper-button/paper-button.html">
+  <link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
+  <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
   <style is="custom-style">
   	  body {
   	  	margin: 0px;
@@ -58,28 +60,61 @@
       .paper-toggle-button {
       	padding-left: 15px; 
       }
+      .done {
+      	background-color: var(--paper-green-500);
+      	position: fixed;
+      	right: 10px;
+      }
+      .addtask {
+      	background-color: var(--paper-green-500);
+      }
+      paper-fab.green {
+      --paper-fab-background: var(--paper-green-500);
+      --paper-fab-keyboard-focus-background: var(--paper-green-900);
+    }
   </style>
 </head>
-<body>
+<body class="fullbleed layout vertical">
 </body>
 <template name="oneTimeSetup" class="fullbleed layout vertical">
   <paper-header-panel mode="scroll" class="green">
     <div class="paper-header">One-Time Set Up</div>
     <div class="content">
-	    <paper-menu>
-	      <paper-item><paper-input label="Name"></paper-input></paper-item>
-	      <paper-item class="time">Set Morning Notification Time<iron-icon icon="chevron-right"></iron-icon></paper-item>
-	      <paper-item class="time">Set Evening Notification Time<iron-icon icon="chevron-right"></iron-icon></paper-item>
-	      <paper-item>Enable Notifications <paper-toggle-button></paper-toggle-button></paper-item>
-	    </paper-menu>
+    <paper-menu>
+      <paper-item class="name"><paper-input id="nametext" label="Name"></paper-input></paper-item>
+      <paper-item class="time">Set Morning Notification Time {{morningTime}}<iron-icon icon="chevron-right"></iron-icon></paper-item>
+      <paper-item class="time1">Set Evening Notification Time {{nightTime}}<iron-icon icon="chevron-right"></iron-icon></paper-item>
+      <paper-item>Enable Notifications <paper-toggle-button></paper-toggle-button></paper-item>
+    </paper-menu>
+    <paper-button tabindex="0" raised class="colorful custom done"><iron-icon icon="check"></iron-icon>Done</paper-button>
     </div>
   </paper-header-panel>
   <paper-dialog id="dialog" modal class="paper-time-picker-dialog">
-  <paper-time-picker id="timePicker"></paper-time-picker>
-	  <div class="buttons">
-	    <paper-button dialog-dismiss>Cancel</paper-button>
-	    <paper-button dialog-confirm>OK</paper-button>
-	  </div>
-  </paper-dialog>
+  <paper-time-picker id="morningTimePicker"></paper-time-picker>
+  <div class="buttons">
+    <paper-button dialog-dismiss>Cancel</paper-button>
+    <paper-button dialog-confirm class="timeset">OK</paper-button>
+  </div>
+</paper-dialog>
+<paper-dialog id="dialog1" modal class="paper-time-picker-dialog">
+  <paper-time-picker id="eveningTimePicker"></paper-time-picker>
+  <div class="buttons">
+    <paper-button dialog-dismiss>Cancel</paper-button>
+    <paper-button dialog-confirm class="timeset">OK</paper-button>
+  </div>
+</paper-dialog>
+</template>
+<template name="planTomorrow" class="fullbleed layout vertical">
+	<paper-header-panel mode="scroll" class="green">
+	    <div class="paper-header">Plan Tomorrow!</div>
+	    <paper-item>
+	    <paper-input id="todo" style="width: 70%; padding:20px;" label="Groceries,Meeting etc.."></paper-input> 
+	    <paper-icon-button icon="add" alt="add" title="add" id="addtodo"></paper-icon-button>
+	    </paper-item>
+	    {{#each todos}}
+	    <paper-item style="padding-left: 15px;">{{todo}} <paper-icon-button icon="delete" alt="delete" title="delete" id="remtodo"></paper-icon-button>
+	    </paper-item>
+	    {{/each}}
+	</paper-header-panel>
 </template>
 

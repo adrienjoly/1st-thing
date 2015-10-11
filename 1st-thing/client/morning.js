@@ -9,3 +9,7 @@ Template.morningPage.events({
     todos.remove(this._id);
   }
 });
+
+    Meteor.call("posterUrl", function(error, results) {
+      console.log('posterUrl', results);
+    });

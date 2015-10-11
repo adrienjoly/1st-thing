@@ -10,7 +10,7 @@ Template.planTomorrow.events({
     todos.insert({todo: todo});
     document.getElementById("todo").updateValueAndPreserveCaret("");
   },
-  'click #remtodo': function() {
+  'click paper-checkbox': function() {
     todos.remove(this._id);
   }
 });

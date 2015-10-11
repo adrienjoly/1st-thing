@@ -6,7 +6,8 @@
       <paper-icon-button icon="add" alt="add" title="add" id="addtodo"></paper-icon-button>
     </paper-item>
     {{#each todos}}
-      <paper-item style="padding-left: 15px;">{{todo}} <paper-icon-button icon="delete" alt="delete" title="delete" id="remtodo"></paper-icon-button>
+      <paper-item style="padding-left: 15px;">
+        <paper-checkbox>{{todo}}</paper-checkbox>
       </paper-item>
     {{/each}}
   </paper-header-panel>

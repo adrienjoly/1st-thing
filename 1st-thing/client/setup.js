@@ -49,5 +49,10 @@ Template.oneTimeSetup.events({
     console.log("demo");
     //Router.go("/morning"); // warning: does not aligns screen to the top
     window.location.href = "/morning";
-  }
+  },
+  'click #demo2': function() {
+    console.log("demo2");
+    //Router.go("/tomorrow"); // warning: does not aligns screen to the top
+    window.location.href = "/tomorrow";
+  },
 });

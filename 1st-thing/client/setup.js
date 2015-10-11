@@ -1,4 +1,7 @@
 Template.oneTimeSetup.helpers({
+  firstName: function() {
+    return (settings.findOne({key: "firstName"}) || {}).value;
+  },
   morningTime: function() {
     return (settings.findOne({key: "morningTime"}) || {}).value;
     //return document.getElementById("dialog").hour();
@@ -22,7 +25,14 @@ Template.oneTimeSetup.events({
     var dialog = document.getElementById("dialog1");
     dialog.open();
   },
+  'click .name': function() {
+    document.getElementById("nametext").setFocused(true);
+  },
   */
+  'input #nametext': function(evt) {
+    console.log(evt.target.value);
+    Meteor.call("setFirstName", evt.target.value);
+  },
   'input #morning-time-selector': function(evt) {
     console.log(evt.target.value);
     Meteor.call("setMorningTime", evt.target.value);
@@ -35,7 +45,8 @@ Template.oneTimeSetup.events({
     console.log("notifications", evt.target.checked);
     Meteor.call("toggleNotif", evt.target.checked);
   },
-  'click .name': function() {
-    document.getElementById("nametext").setFocused(true);
-  },
+  'click #demo': function() {
+    console.log("demo");
+    Router.go("/morning");
+  }
 });

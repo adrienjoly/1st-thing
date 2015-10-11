@@ -2,10 +2,12 @@
   <paper-header-panel mode="scroll" class="green">
     <div class="paper-header">Good morning, {{firstName}}!</div>
     <img src="{{posterUrl}}">
+    <paper-item>
+      <p>Tasks for today:</p>
+    </paper-item>
     {{#each todos}}
       <paper-item style="padding-left: 15px;">
-        {{todo}}
-        <paper-icon-button icon="delete" alt="delete" title="delete" id="remtodo"></paper-icon-button>
+        <paper-checkbox>{{todo}}</paper-checkbox>
       </paper-item>
     {{/each}}
   </paper-header-panel>

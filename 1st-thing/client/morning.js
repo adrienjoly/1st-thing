@@ -11,7 +11,7 @@ Template.morningPage.helpers({
 });
 
 Template.morningPage.events({
-  'click #remtodo': function() {
+  'click paper-checkbox': function() {
     todos.remove(this._id);
   }
 });

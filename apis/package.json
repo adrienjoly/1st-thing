@@ -1,0 +1,20 @@
+{
+  "name": "1st-thing-apis",
+  "version": "0.1.0",
+  "description": "",
+  "main": "pinterest.js",
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "express": "^4.13.3",
+    "lodash": "^3.10.1",
+    "redwrap": "^0.0.4",
+    "request": "^2.64.0",
+    "wunderlist": "^0.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}

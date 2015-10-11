@@ -19,5 +19,8 @@ if (Meteor.isServer) {
     "setNightTime": function(time) {
       settings.upsert({key: "nightTime"}, {$set: {value: time}});
     },
+    "toggleNotif": function(checked) {
+      settings.upsert({key: "notif"}, {$set: {value: checked}});
+    }
   });
 }

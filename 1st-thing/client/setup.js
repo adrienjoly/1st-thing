@@ -6,7 +6,10 @@ Template.oneTimeSetup.helpers({
   nightTime: function() {
     return (settings.findOne({key: "nightTime"}) || {}).value;
     //return document.getElementById("dialog1").time();
-  }
+  },
+  "notif": function() {
+    return (settings.findOne({key: "notif"}) || {}).value;
+  },
 });
 
 Template.oneTimeSetup.events({
@@ -27,6 +30,10 @@ Template.oneTimeSetup.events({
   'input #night-time-selector': function(evt) {
     console.log(evt.target.value);
     Meteor.call("setNightTime", evt.target.value);
+  },
+  'change #notifications-switch': function(evt) {
+    console.log("notifications", evt.target.checked);
+    Meteor.call("toggleNotif", evt.target.checked);
   },
   'click .name': function() {
     document.getElementById("nametext").setFocused(true);

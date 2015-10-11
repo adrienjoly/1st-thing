@@ -1,7 +1,5 @@
 todos = new Mongo.Collection('todos');
-if (Meteor.isClient) {
-  // counter starts at 0
-  
+if (Meteor.isClient) {  
   Session.setDefault('counter', 0);
   Template.planTomorrow.helpers({
     todos: function() {
@@ -25,7 +23,6 @@ if (Meteor.isClient) {
       return document.getElementById("dialog1").time();
     }
   });
-
   Template.oneTimeSetup.events({
     'click .time': function() {
       var dialog = document.getElementById("dialog");
@@ -39,7 +36,6 @@ if (Meteor.isClient) {
       document.getElementById("nametext").setFocused(true);
     },
   });
-
   }
 
 if (Meteor.isServer) {

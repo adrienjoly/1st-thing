@@ -13,6 +13,9 @@ if (Meteor.isServer) {
     settings.insert({ key: "nightTime", value: "20:00" });
   }
   Meteor.methods({
+    "setFirstName": function(name) {
+      settings.upsert({key: "firstName"}, {$set: {value: name}});
+    },
     "setMorningTime": function(time) {
       settings.upsert({key: "morningTime"}, {$set: {value: time}});
     },

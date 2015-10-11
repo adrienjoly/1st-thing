@@ -47,6 +47,7 @@ Template.oneTimeSetup.events({
   },
   'click #demo': function() {
     console.log("demo");
-    Router.go("/morning");
+    //Router.go("/morning"); // warning: does not aligns screen to the top
+    window.location.href = "/morning";
   }
 });

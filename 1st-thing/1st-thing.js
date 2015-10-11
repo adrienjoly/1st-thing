@@ -1,20 +1,46 @@
+todos = new Mongo.Collection('todos');
 if (Meteor.isClient) {
   // counter starts at 0
+  
   Session.setDefault('counter', 0);
-
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
+  Template.planTomorrow.helpers({
+    todos: function() {
+      return todos.find();
+    }
+  });
+  Template.planTomorrow.events({
+    'click #addtodo': function() {
+      var todo = document.getElementById("todo").value;
+      todos.insert({todo: todo});
+    },
+    'click #remtodo': function() {
+      todos.remove(this._id);
+    }
+  });
+  Template.oneTimeSetup.helpers({
+    morningTime: function() {
+      return document.getElementById("dialog").hour();
+    },
+    nightTime: function() {
+      return document.getElementById("dialog1").time();
     }
   });
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
+  Template.oneTimeSetup.events({
+    'click .time': function() {
+      var dialog = document.getElementById("dialog");
+      dialog.open();
+    },
+    'click .time1': function() {
+      var dialog = document.getElementById("dialog1");
+      dialog.open();
+    },
+    'click .name': function() {
+      document.getElementById("nametext").setFocused(true);
+    },
   });
-}
+
+  }
 
 if (Meteor.isServer) {
   Meteor.startup(function () {

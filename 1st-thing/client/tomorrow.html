@@ -1,0 +1,13 @@
+<template name="planTomorrow" class="fullbleed layout vertical">
+  <paper-header-panel mode="scroll" class="green">
+    <div class="paper-header">Plan Tomorrow!</div>
+    <paper-item>
+      <paper-input id="todo" style="width: 70%; padding:20px;" label="Groceries,Meeting etc.."></paper-input> 
+      <paper-icon-button icon="add" alt="add" title="add" id="addtodo"></paper-icon-button>
+    </paper-item>
+    {{#each todos}}
+      <paper-item style="padding-left: 15px;">{{todo}} <paper-icon-button icon="delete" alt="delete" title="delete" id="remtodo"></paper-icon-button>
+      </paper-item>
+    {{/each}}
+  </paper-header-panel>
+</template>

@@ -1,0 +1,11 @@
+<template name="morningPage" class="fullbleed layout vertical">
+  <paper-header-panel mode="scroll" class="green">
+    <div class="paper-header">Good morning!</div>
+    {{#each todos}}
+      <paper-item style="padding-left: 15px;">
+        {{todo}}
+        <paper-icon-button icon="delete" alt="delete" title="delete" id="remtodo"></paper-icon-button>
+      </paper-item>
+    {{/each}}
+  </paper-header-panel>
+</template>

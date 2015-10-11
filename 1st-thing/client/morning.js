@@ -1,4 +1,7 @@
 Template.morningPage.helpers({
+  posterUrl: function() {
+    return Session.get("posterUrl");
+  },
   todos: function() {
     return todos.find();
   }
@@ -10,6 +13,7 @@ Template.morningPage.events({
   }
 });
 
-    Meteor.call("posterUrl", function(error, results) {
-      console.log('posterUrl', results);
-    });
+Meteor.call("posterUrl", function(error, url) {
+  console.log("posterUrl", url);
+  Session.set("posterUrl", url);
+});

@@ -45,4 +45,8 @@ Template.oneTimeSetup.events({
     console.log("notifications", evt.target.checked);
     Meteor.call("toggleNotif", evt.target.checked);
   },
+  'click #demo': function() {
+    console.log("demo");
+    Router.go("/morning");
+  }
 });

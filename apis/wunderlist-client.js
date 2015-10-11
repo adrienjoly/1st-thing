@@ -50,9 +50,17 @@ function startWunderlistAuthServer(clientId, clientSec, onAuth) {
   });
 }
 
+exports.startWunderlistAuthServer = startWunderlistAuthServer;
+
+exports.getUserLoginPageUrl = function(clientId) {
+  return AUTH_URL + '?client_id=' + clientId + '&redirect_uri=' + CALLBACK_URL + '&state=' + STATE;
+  // this web page from wunderlist ask user's permission for us to access their tasks.
+  // when user accepts => wunderlist calls our server, as run by startWunderlistAuthServer()
+}
+
 exports.askUserToken = function(clientId, clientSec, callback) {
   if (!server) startWunderlistAuthServer(clientId, clientSec, callback);
-  var url = AUTH_URL + '?client_id=' + clientId + '&redirect_uri=' + CALLBACK_URL + '&state=' + STATE;
+  var url = exports.getUserLoginPageUrl(clientId);
   console.log('Opening in web browser:', url);
   require('child_process').exec('open "' + url + '"');
 };

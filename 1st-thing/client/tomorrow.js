@@ -1,6 +1,6 @@
 Template.planTomorrow.helpers({
   todos: function() {
-    return todos.find();
+    return todos.find().fetch().reverse();
   }
 });
 

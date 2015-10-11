@@ -6,7 +6,7 @@ Template.morningPage.helpers({
     return Session.get("posterUrl");
   },
   todos: function() {
-    return todos.find();
+    return todos.find().fetch().reverse();
   }
 });
 

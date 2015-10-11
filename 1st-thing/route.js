@@ -1,4 +1,6 @@
-Router.route('/', function () {
+Router.route('/', 'iphone');
+
+Router.route('/setup', function () {
   this.render('oneTimeSetup');
 });
 

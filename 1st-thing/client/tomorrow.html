@@ -5,10 +5,12 @@
       <paper-input id="todo" style="width: 70%; padding:20px;" label="Groceries,Meeting etc.."></paper-input> 
       <paper-icon-button icon="add" alt="add" title="add" id="addtodo"></paper-icon-button>
     </paper-item>
+    <div>
     {{#each todos}}
       <paper-item style="padding-left: 15px;">
         <paper-checkbox>{{todo}}</paper-checkbox>
       </paper-item>
     {{/each}}
+    </div>
   </paper-header-panel>
 </template>

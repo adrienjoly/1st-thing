@@ -1,4 +1,7 @@
 Template.morningPage.helpers({
+  firstName: function() {
+    return (settings.findOne({key: "firstName"}) || {}).value;
+  },
   posterUrl: function() {
     return Session.get("posterUrl");
   },

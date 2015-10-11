@@ -1,4 +1,7 @@
 Template.morningPage.helpers({
+  firstName: function() {
+    return (settings.findOne({key: "firstName"}) || {}).value;
+  },
   posterUrl: function() {
     return Session.get("posterUrl");
   },
@@ -8,7 +11,7 @@ Template.morningPage.helpers({
 });
 
 Template.morningPage.events({
-  'click #remtodo': function() {
+  'click paper-checkbox': function() {
     todos.remove(this._id);
   }
 });

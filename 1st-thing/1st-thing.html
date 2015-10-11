@@ -79,15 +79,12 @@
 <template name="oneTimeSetup" class="fullbleed layout vertical">
   <paper-header-panel mode="scroll" class="green">
     <div class="paper-header">One-Time Set Up</div>
-    <div class="content">
-    <paper-menu>
       <paper-item class="name"><paper-input id="nametext" label="Name"></paper-input></paper-item>
       <paper-item class="time">Set Morning Notification Time {{morningTime}}<iron-icon icon="chevron-right"></iron-icon></paper-item>
       <paper-item class="time1">Set Evening Notification Time {{nightTime}}<iron-icon icon="chevron-right"></iron-icon></paper-item>
       <paper-item>Enable Notifications <paper-toggle-button></paper-toggle-button></paper-item>
-    </paper-menu>
+
     <paper-button tabindex="0" raised class="colorful custom done"><iron-icon icon="check"></iron-icon>Done</paper-button>
-    </div>
   </paper-header-panel>
   <paper-dialog id="dialog" modal class="paper-time-picker-dialog">
   <paper-time-picker id="morningTimePicker"></paper-time-picker>

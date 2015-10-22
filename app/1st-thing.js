@@ -1,6 +1,10 @@
 todos = new Mongo.Collection('todos');
 settings = new Mongo.Collection('settings');
 
+if (Meteor.isCordova) {
+  console.log('running on cordova');
+}
+
 if (Meteor.isClient) {  
   Session.setDefault('counter', 0);
 }

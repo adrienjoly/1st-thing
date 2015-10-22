@@ -1,4 +1,4 @@
-Router.route('/', 'iphone');
+Router.route('/', Meteor.isCordova ? 'morningPage' : 'iphone');
 
 Router.route('/setup', function () {
   this.render('oneTimeSetup');

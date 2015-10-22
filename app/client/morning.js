@@ -10,6 +10,10 @@ Template.morningPage.helpers({
   }
 });
 
+Template.morningPage.rendered = function(){
+  console.log('morningPage running on cordova');
+};
+
 Template.morningPage.events({
   'click paper-checkbox': function() {
     todos.remove(this._id);

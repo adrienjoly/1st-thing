@@ -32,6 +32,15 @@ block content
       - for (var i = 0; i < session.notebooks.length; ++i)
         li= session.notebooks[i].name
   br
+
+  - if(notes)
+    h2 Notes
+    ul
+      - for (var i = 0; i < notes.length; ++i)
+        li= notes[i].title
+    p first image found:
+      img(src=firstImageURL)
+  br
   
   - connectToEvernote = "Authenticate with Evernote to see this information"
   h2 Current status

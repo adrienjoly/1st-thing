@@ -15,14 +15,35 @@ function fetchNotes(noteStore, notebookGuid, callback){
   var resultSpec = new Evernote.NotesMetadataResultSpec();
   resultSpec.includeTitle = true;
   noteStore.findNotesMetadata(filter, 0, 100, resultSpec, function(err, notesMeta) {
+    //console.log('findNotesMetadata =>', notesMeta);
     callback(err, (notesMeta || {}).notes);
   });
 }
 
-/*
-  noteStore.getNoteContent(notebooks[0].guid, function(err, note) {
-  })
-*/
+function getNotesAndFirstImageURL(client, notebookGuid, callback) {
+  var noteStore = client.getNoteStore();
+  var userStore = client.getUserStore();
+  fetchNotes(noteStore, notebookGuid, function(err, notes) {
+    if (err) return callback(err);
+    var firstNoteGuid = notes[0].guid;
+    //console.log('[index] => notes:', err || notes);
+    userStore.getUser(function(err, user) {
+      if (err) return callback(err);
+      userStore.getPublicUserInfo(user.username, function (err, userInfo) {
+        if (err) return callback(err);
+        var userUrl = userInfo.webApiUrlPrefix;
+        noteStore.getNote(firstNoteGuid, false, false, false, false, function(err, note) {
+          if (err) return callback(err);
+          var firstResourceGuid = note.resources[0].guid;
+          callback(null, {
+            notes: notes,
+            firstImageURL: userUrl + 'res/' + firstResourceGuid,
+          });
+        });
+      });
+    });
+  });
+}
 
 // home page
 exports.index = function(req, res) {
@@ -38,11 +59,10 @@ exports.index = function(req, res) {
     noteStore.listNotebooks(function(err, notebooks) {
       console.log('[index] =>', err || notebooks);
       req.session.notebooks = notebooks;
-      console.log('notebooks[0].guid:', notebooks[0].guid);
-      fetchNotes(noteStore, notebooks[0].guid, function(err, notes) {
-        console.log('[index] => notes:', err || notes);
+      getNotesAndFirstImageURL(client, notebooks[0].guid, function(err, result){
+        console.log('getFirstImageURL =>', err || result);
+        res.render('index', result);
       });
-      res.render('index');
     });
   } else {
     res.render('index');

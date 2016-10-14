@@ -2,6 +2,8 @@
 
 This repo is a fork of [an app made with Osman Abdelnasir (@esaminu)](https://github.com/AsianMeteorites/1st-thing) [during the Meteor Hackathon, in October 2015](http://devpost.com/software/1st-thing-in-the-morning).
 
+Wunderlist-related API code was moved to [wunderlist-report](https://github.com/adrienjoly/wunderlist-report), and the former Meteor app was removed.
+
 The goal is to give you the motivation to execute your tasks, every morning.
 
 ## Inspiration

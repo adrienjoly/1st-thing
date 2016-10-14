@@ -2,10 +2,10 @@ var Evernote = require('evernote').Evernote;
 require('dotenv').load();
 
 // Remember to set your APP_URL variable inside .env
-var callbackUrl;
-if (process.env.APP_URL.indexOf("azk.io") == -1 &&
-    process.env.APP_URL.indexOf("herokuapp.com") == -1) {
-  callbackUrl = process.env.APP_URL + ':' + process.env.PORT;
+var callbackUrl = process.env.APP_URL;
+if (callbackUrl.indexOf("azk.io") == -1 &&
+    callbackUrl.indexOf("herokuapp.com") == -1) {
+  callbackUrl = callbackUrl + ':' + process.env.PORT;
 }
 callbackUrl += '/oauth_callback';
 

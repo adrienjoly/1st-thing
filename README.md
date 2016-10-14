@@ -31,7 +31,7 @@ $ npm install
 $ cp .env.sample .env
 ```
 
-- Update the value of `API_CONSUMER_KEY` and `API_CONSUMER_SECRET`, after requesting an API Key from [Evernote Developer Documentation](https://dev.evernote.com/doc/).
+- Update the value of `API_CONSUMER_KEY` and `API_CONSUMER_SECRET`, after requesting a **Full Access** API Key from [Evernote Developer Documentation](https://dev.evernote.com/doc/).
 
 ## Start application
 

@@ -9,14 +9,28 @@ if (callbackUrl.indexOf("azk.io") == -1 &&
 }
 callbackUrl += '/oauth_callback';
 
+function fetchNotes(noteStore, notebookGuid, callback){
+  var filter = new Evernote.NoteFilter();
+  filter.notebookGuid = notebookGuid;
+  var resultSpec = new Evernote.NotesMetadataResultSpec();
+  resultSpec.includeTitle = true;
+  noteStore.findNotesMetadata(filter, 0, 100, resultSpec, function(err, notesMeta) {
+    callback(err, (notesMeta || {}).notes);
+  });
+}
+
+/*
+  noteStore.getNoteContent(notebooks[0].guid, function(err, note) {
+  })
+*/
+
 // home page
 exports.index = function(req, res) {
   console.log('[index] oauthAccessToken:', req.session.oauthAccessToken);
   if (req.session.oauthAccessToken) {
-    var token = req.session.oauthAccessToken;
     console.log('[index] instanciating client...');
     var client = new Evernote.Client({
-      token: token,
+      token: req.session.oauthAccessToken,
       sandbox: process.env.SANDBOX || false
     });
     console.log('[index] listing notebooks...');
@@ -24,6 +38,10 @@ exports.index = function(req, res) {
     noteStore.listNotebooks(function(err, notebooks) {
       console.log('[index] =>', err || notebooks);
       req.session.notebooks = notebooks;
+      console.log('notebooks[0].guid:', notebooks[0].guid);
+      fetchNotes(noteStore, notebooks[0].guid, function(err, notes) {
+        console.log('[index] => notes:', err || notes);
+      });
       res.render('index');
     });
   } else {

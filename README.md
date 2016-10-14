@@ -69,8 +69,10 @@ And open: http://express.dev.azk.io
 
 ## Deploy to Heroku
 
-To deploy to Heroku, just run:
+- After you associated your cloned repo with a heroku app, push the last commit to it: 
 
 ```sh
 git push heroku master
 ```
+
+- Don't forget to setup your the environment variables in your heroku app's dashboard! (except `PORT`)

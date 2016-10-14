@@ -31,6 +31,8 @@ $ npm install
 $ cp .env.sample .env
 ```
 
+- Update the value of `API_CONSUMER_KEY` and `API_CONSUMER_SECRET`, after requesting an API Key from [Evernote Developer Documentation](https://dev.evernote.com/doc/).
+
 ## Start application
 
 ### Run with Node.js
@@ -46,6 +48,7 @@ You can start the express server with `npm start`.  Once the server starts, you 
 
 ### Run with azk (container)
 
+- [Install azk](http://docs.azk.io/en/installation/).
 - You need a sandbox account on Azk.  You can create one [here](https://sandbox.evernote.com/Registration.action).
 - Fill your Azk API Consumer Key and Consumer Secret in `.env`.
 - Change the environment variables in `.env` to:

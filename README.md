@@ -5,7 +5,7 @@ By sending a notification to your mobile phone, with a reminder of all the tasks
 
 ## Status: What it does now [work in progress]
 
-After you login to Evernote Sandbox, it displays a web page listing your Evernote notebooks. 
+After you login to Evernote Sandbox, it displays a web page listing your Evernote notebooks, and the first image attached to the first note of your first notebook.
 
 ## Inspiration
 

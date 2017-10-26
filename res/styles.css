@@ -242,7 +242,7 @@ body {
 @import url("//fonts.googleapis.com/css?family=Montserrat");
 body {  background-color: rgba(0,0,0,1); }
 .lp-site__bg-image {
-  background-image: url("/res/dawn-landscape-mountains-nature.jpg");
+  background-image: url("./res/dawn-landscape-mountains-nature.jpg");
   background-attachment: scroll;
   background-position-x: 50%;
   background-position-y: 50%;
